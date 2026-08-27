@@ -1,0 +1,25 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+html,
+body{
+    margin: 0;
+}
+
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container  img{
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}

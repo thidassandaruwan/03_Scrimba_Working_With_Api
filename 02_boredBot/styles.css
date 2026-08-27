@@ -1,0 +1,89 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+}
+
+body {
+    /* CSS generated from https://uigradients.com */
+    background: #bdc3c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    font-family: "Oxygen", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    justify-content: space-evenly;
+}
+
+#title {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 0;
+}
+
+#idea {
+    font-size: 2rem;
+    text-align: center;
+    display: block;
+}
+
+#generate-task-btn {
+    padding: 1em 2em;
+    border-radius: 0.5em;
+    border: 1px solid darkred;
+    background-color: red;
+    color: white;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#generate-task-btn:hover{
+    background-color: white;
+    color: red;
+}
+
+.idea-container{
+    opacity: 0.6;
+    width: 70%;
+    height: 30%;
+    padding: 1em;
+    border-radius: 1em;
+    margin-top: 1em;
+    background-color: white;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.fun {
+    /* CSS generated from https://uigradients.com */
+    background: #fc4a1a;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #f7b733, #fc4a1a);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.error{
+    background: #1D4350;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #A43931, #1D4350);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #A43931, #1D4350); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
