@@ -1,3 +1,6 @@
+// API base url
+const BASE_URL = "https://www.thecolorapi.com/scheme";
+
 const themeBtn = document.getElementById("switch-theme-btn");
 const colorControlsForm = document.getElementById("control-bar");
 const submitBtn = document.getElementById("control-submit-btn");
@@ -6,10 +9,6 @@ themeBtn.addEventListener("click", switchTheme);
 colorControlsForm.addEventListener("submit", (event) => {
     handleFormSubmission(event)
 })
-
-// TODO : get color container elements
-
-// TODO : copright year
 
 function switchTheme(){
     const currentTheme = document.body.getAttribute("data-theme");
@@ -22,7 +21,7 @@ function switchTheme(){
     themeBtn.textContent = newTheme === "light" ? "Switch to Dark" : "Switch to Light";
 }
 
-function handleFormSubmission(event){
+async function handleFormSubmission(event){
     event.preventDefault();
     // disable the submit button
     submitBtn.disabled = true;
@@ -33,7 +32,15 @@ function handleFormSubmission(event){
     const formData = new FormData(colorControlsForm);
     const colorControls = Object.fromEntries(formData);
 
-    console.log(colorControls.color, colorControls.mode)
+    const color = colorControls.color.replace('#', '');
+    const mode = colorControls.mode;
+    const COUNT = 5;
+
+    const colorData = await getColorScheme(color, mode, COUNT);
+    const hexValues = colorData.colors.map( color => color.hex.value );
+
+    updateUI(hexValues)
+    
 
     // reset the submit button
     submitBtn.textContent = "Get Color Scheme";
@@ -41,10 +48,27 @@ function handleFormSubmission(event){
 
 }
 
-function getColorScheme(color, mode, count){
+async function getColorScheme(color, mode, count){
+    // prepared api GET url
+    const URL = `${BASE_URL}?hex=${color}&mode=${mode}&count=${count}`;
+
+    try{
+        const response = await fetch(URL);
+        
+        if(!response.ok){
+            throw Error(`Error retriving color data : ${response.status}`);
+        }
+        
+        return await response.json();
+    }
+    catch(error){
+        console.log(`Error: ${error.message}`)
+        return null;
+    }
+}
+
+function updateUI(hexValues){
 
 }
 
-// function updateUI(){
-
-// }
+// TODO : copright year
