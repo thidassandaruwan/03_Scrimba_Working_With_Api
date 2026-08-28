@@ -4,11 +4,18 @@ const BASE_URL = "https://www.thecolorapi.com/scheme";
 const themeBtn = document.getElementById("switch-theme-btn");
 const colorControlsForm = document.getElementById("control-bar");
 const submitBtn = document.getElementById("control-submit-btn");
+const colorSamplesContainer = document.getElementById("color-samples");
 
 themeBtn.addEventListener("click", switchTheme);
+
+colorSamplesContainer.addEventListener("click", (event) => {
+    copyTheHexValue(event);
+});
+
 colorControlsForm.addEventListener("submit", (event) => {
     handleFormSubmission(event)
 })
+
 
 function switchTheme(){
     const currentTheme = document.body.getAttribute("data-theme");
@@ -19,6 +26,24 @@ function switchTheme(){
     
     // Update button text
     themeBtn.textContent = newTheme === "light" ? "Switch to Dark" : "Switch to Light";
+}
+
+function copyTheHexValue(event){
+    const sample = event.target.closest(".sample-container");
+    if (!sample){
+        return;
+    }
+
+    const hexValue = sample.querySelector(".hex-value").textContent;
+    
+    navigator.clipboard.writeText(hexValue)
+        .then( () => {
+            alert("Copied");
+        })
+        .catch((error) => {
+            console.log(`Error copying the hexvalue: ${error.message}`);
+        })
+    
 }
 
 async function handleFormSubmission(event){
@@ -37,15 +62,17 @@ async function handleFormSubmission(event){
     const COUNT = 5;
 
     const colorData = await getColorScheme(color, mode, COUNT);
+    // if error occurered and returned null, reset the submit button and exit the program
+    if(!colorData){ 
+        resetSubmitBtn();
+        return; 
+    }
+
     const hexValues = colorData.colors.map( color => color.hex.value );
-
-    updateUI(hexValues)
+    colorSamplesContainer.innerHTML =  getColorSamplesHTML(hexValues)
     
-
     // reset the submit button
-    submitBtn.textContent = "Get Color Scheme";
-    submitBtn.disabled = false;
-
+    resetSubmitBtn();
 }
 
 async function getColorScheme(color, mode, count){
@@ -67,8 +94,29 @@ async function getColorScheme(color, mode, count){
     }
 }
 
-function updateUI(hexValues){
-
+function getColorSamplesHTML(hexValues){
+    return hexValues.map((color) => {
+        return `
+            <div class="sample-container" style="--swatch-color: ${color};">
+                <div class="color-sample"></div>
+                <span class="hex-value">${color}</span>
+            </div>
+        `
+    });
 }
 
-// TODO : copright year
+function resetSubmitBtn(){
+    submitBtn.textContent = "Get Color Scheme";
+    submitBtn.disabled = false;
+}
+
+// copright year
+function updateCopyrightYear(){
+    document.getElementById("copyright-year").textContent = new Date().getFullYear();
+}
+
+
+// load the initial colors by fake control form submission
+colorControlsForm.requestSubmit();
+// load the copyright year
+updateCopyrightYear()

@@ -160,19 +160,15 @@ main{
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    border: var(--border-color) solid;
 }
 
 .color-sample{
     min-width: 20%;
     height: 100%;
     padding: 1em;
+    background-color: var(--swatch-color, #a338a0);
 }
-
-#sample-1 .color-sample { background-color: var(--color-1); }
-#sample-2 .color-sample { background-color: var(--color-2); }
-#sample-3 .color-sample { background-color: var(--color-3); }
-#sample-4 .color-sample { background-color: var(--color-4); }
-#sample-5 .color-sample { background-color: var(--color-5); }
 
 .hex-value {
     align-self: center;
