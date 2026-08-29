@@ -38,12 +38,23 @@ function copyTheHexValue(event){
     
     navigator.clipboard.writeText(hexValue)
         .then( () => {
-            alert("Copied");
+            showToast(`${hexValue} copied`);
         })
         .catch((error) => {
+            showToast(`Error copying the hexvalue: ${error.message}`)
             console.log(`Error copying the hexvalue: ${error.message}`);
         })
     
+}
+
+function showToast(text){
+    Toastify({
+    text: text,
+    duration: 3000,
+    gravity: "bottom", // `top` or `bottom`
+    position: "center", // `left`, `center` or `right`
+    style: { background: "#1e1e24", borderRadius: "5px" },
+    }).showToast();
 }
 
 async function handleFormSubmission(event){
@@ -114,6 +125,7 @@ function resetSubmitBtn(){
 function updateCopyrightYear(){
     document.getElementById("copyright-year").textContent = new Date().getFullYear();
 }
+
 
 
 // load the initial colors by fake control form submission
