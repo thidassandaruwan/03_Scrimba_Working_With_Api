@@ -16,8 +16,30 @@
     <title>Game of War</title>
 </head>
 <body>
+    <div class="top-row">
+        <button id="restart-btn" class="cinzel-decorative" type="button">RESTART</button>
+        <p id="remaining-cards" class="cinzel-decorative">REMAINING CARDS : <span id="card-number"> 0 </span></p>
+    </div>
+    <div class="title-row">
+        <img src="img/game_of_war.png" alt="game of war logo">
+    </div>
+    <div class="game-content">
+        <div class="participant">
+            <img src="./img/5S.png">
+            <p class="participant-score della-respira">Computer : <span id="computer-score">0</span></p>
+        </div>
 
-    <!-- card img : aspect ratio : 5 : 7 -->
-    
+        <div class="result">
+            <p id="result-txt" class="cinzel-decorative">
+                Fighting!
+            </p>
+        </div>
+
+        <div class="participant">
+            <img src="./img/6H.png">
+            <p class="participant-score della-respira"> You : <span id="user-score">0</span></p>
+        </div>
+    </div>
+    <button id="draw-btn" class="cinzel-decorative">DRAW</button>
 </body>
 </html>
