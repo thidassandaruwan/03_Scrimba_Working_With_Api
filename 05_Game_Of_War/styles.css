@@ -8,6 +8,21 @@ html, body {
     background-color: #4a3118;
 }
 
+.hidden{
+    visibility: hidden;
+}
+
+#game-banner.remove{
+    display: none;
+}
+
+.paper-background{
+    background-image: url("./img/banner.png"); 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: 100% 100%; 
+}
+
 img {
     display: block;
 }
@@ -52,17 +67,22 @@ button:not(:disabled):active {
     font-family: "Della Respira", serif;
 }
 
-body {
-    height: 100vh;
+body{
+    
     background-image: url("./img/background.png"); 
     background-repeat: no-repeat; 
     background-position: center; 
-    background-size: cover; 
+    background-size: cover;
+}
+
+.game-container { 
+    height: 100dvh;
+    width: 100dvw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1.2rem 2rem;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 /* Top row */
@@ -113,7 +133,7 @@ body {
 
 #computer-card,
 #user-card {
-    background-color: white;
+    /* background-color: white; */
     border-radius: 15px;
     width: 250px;
     aspect-ratio: 5 / 7;
@@ -134,10 +154,6 @@ body {
 }
 
 .result {
-    background-image: url("./img/banner.png"); 
-    background-repeat: no-repeat; 
-    background-position: center; 
-    background-size: 100% 100%; 
     width: 260px;
     height: 200px;
     display: flex;
@@ -163,3 +179,28 @@ body {
     transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
+/* start the game banner */
+#game-banner{
+    position: absolute;
+    width: 70vw;
+    height: 80vh;
+    inset: 0;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5rem;
+    gap: 2em;
+}
+
+#game-banner p{
+    color: #4a3118;
+}
+
+#start-btn{
+    font-size: inherit;
+    background-color: darkgreen;
+}

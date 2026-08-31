@@ -16,30 +16,37 @@
     <title>Game of War</title>
 </head>
 <body>
-    <div class="top-row">
-        <button id="restart-btn" class="cinzel-decorative" type="button">RESTART</button>
-        <p id="remaining-cards" class="cinzel-decorative">REMAINING CARDS : <span id="card-number"> 0 </span></p>
-    </div>
-    <div class="title-row">
-        <img src="img/game_of_war.png" alt="game of war logo">
-    </div>
-    <div class="game-content">
-        <div class="participant">
-            <div id="computer-card"> </div>
-            <p class="participant-score della-respira">Computer : <span id="computer-score">0</span></p>
+    <div class="game-container hidden">
+        <div class="top-row">
+            <button id="restart-btn" class="cinzel-decorative" type="button">RESTART</button>
+            <p id="remaining-cards" class="cinzel-decorative">REMAINING CARDS : <span id="card-number"> 0 </span></p>
         </div>
+        <div class="title-row">
+            <img src="img/game_of_war.png" alt="game of war logo">
+        </div>
+        <div class="game-content">
+            <div class="participant">
+                <div id="computer-card"> </div>
+                <p class="participant-score della-respira">OPPONENT : <span id="computer-score">0</span></p>
+            </div>
+            <div class="result paper-background">
+                <p id="result-txt" class="cinzel-decorative">
+                    START THE WAR!
+                </p>
+            </div>
+            <div class="participant">
+                <div id="user-card"> </div>
+                <p class="participant-score della-respira"> You : <span id="user-score">0</span></p>
+            </div>
+        </div>
+        <button id="draw-btn" class="cinzel-decorative">DRAW</button>
+    </div>
 
-        <div class="result">
-            <p id="result-txt" class="cinzel-decorative">
-                START THE WAR!
-            </p>
-        </div>
-
-        <div class="participant">
-            <div id="user-card"> </div>
-            <p class="participant-score della-respira"> You : <span id="user-score">0</span></p>
-        </div>
+    <div id="game-banner" class="paper-background">
+        <p class="cinzel-decorative">
+            ENTER THE BATTLEFIELD!
+        </p>
+        <button id="start-btn" class="cinzel-decorative">ENTER</button>
     </div>
-    <button id="draw-btn" class="cinzel-decorative">DRAW</button>
 </body>
 </html>
