@@ -51,6 +51,9 @@ async function reStartGame(){
     restartBtn.textContent = "GETTING NEW DECK..."
     restartBtn.disabled = true;
 
+    // remove the previous drawn cards
+    computerCard.innerHTML = userCard.innerHTML = ""
+
     // get new deck
     const deck = await getNewDeck();
     // assign the deck id
@@ -153,8 +156,8 @@ function declareWinner(){
     const resultText = (computerScore > userScore)? "OPPONENT WON THE WAR!" : (userScore > computerScore)? "YOU WON THE WAR!" : "YOU BOTH LOST!";
     gameBanner.querySelector("p").textContent = resultText;
 
-    // remove the previous drawn cards
-    computerCard.innerHTML = userCard.innerHTML = ""
+    // // remove the previous drawn cards
+    // computerCard.innerHTML = userCard.innerHTML = ""
 
     // hide the game container
     gameContainer.classList.add("hidden");
