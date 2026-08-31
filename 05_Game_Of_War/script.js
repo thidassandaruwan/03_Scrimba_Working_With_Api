@@ -2,6 +2,8 @@
 // `https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`
 
 const DECK_OF_CARDS_API = "https://apis.scrimba.com/deckofcards/api/deck";
+// values of cards in order, left side less value, right side higher the value
+const CARD_VALUES = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING", "ACE"];
 
 let deckId = null;
 let computerScore = 0;
@@ -98,13 +100,22 @@ async function playRound() {
     resultTxtElement.textContent = "FIGHTING..."
 
     const drawings = await drawCards();
-    if (!drawings){ return; }
+    if (!drawings){ 
+        // enable the draw button
+        drawBtn.textContent = "DRAW"
+        drawBtn.disabled = false;
+        // exit the program
+        return; 
+    }
 
-    const {image: compCardImg, value: compCardVal} = drawings.cards[0];
-    const {image: userCardImg, value: userCardVal} = drawings.cards[1];
+    const {image: compCardImg, value: compValue} = drawings.cards[0];
+    const {image: userCardImg, value: userValue} = drawings.cards[1];
 
     computerCard.innerHTML = `<img src="${compCardImg}"/>`;
     userCard.innerHTML = `<img src="${userCardImg}"/>`;
+
+    const compCardVal = CARD_VALUES.indexOf(compValue);
+    const userCardVal = CARD_VALUES.indexOf(userValue);
     
     let resultText = "";
     if(compCardVal > userCardVal){
